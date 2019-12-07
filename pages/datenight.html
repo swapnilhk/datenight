@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<link href='https://fonts.googleapis.com/css?family=Sofia' rel='stylesheet'>
+<style>
+body {
+    font-family: 'Sofia';font-size: 30px; text-align: center; color: purple; background-color: pink;
+}
+
+button {
+    font-size: 40px; text-align: center; color: pink; background-color: purple; padding: 20px:;
+}
+</style>
+</head>
+<body>
+<script>
+var txt = "[{	\"title\": \"Welcome\",	\"content\": \"I am elderly Mr. Blixa, the twin brother of Alixa<br/><br/>Let me guess! You've been sent this link by your boyfriend or your husband!<br/>Such a cliche! Ask him to do better than this!<br/><br/>Having said that, it is all up to you if you want to proceed or not . . .\"}, {	\"title\": \"Ahhhhh . . . Great to see you here\",	\"content\": \"Looks like you decided to proceed!<br/>Brave choice I must say . . .<br/>Since we are going t spend some time together now, let me gather some information regarding you . . .\"}, {	\"title\": \"You There . . .\",	\"content\": \"You're brave yet sensitive<br/>Caring yet fearful<br/>Beautiful yet humble<br/>Intelligent yet naive<br/>You've got a golden heart, I must say. Heart of pure gold and love. You've got a lot of energy.<br/>With a heart of gold and energy of a nuclear reactor, I think you can conquer the world!\"}, {	\"title\": \"I met your Husband that day . . .\",	\"content\": \"I met your husband that day. It was he who asked me to talk to you (Personally I think the guy should have talked himself . . . Such a dumb ass . . . Anyway now!) He asked me to tell you that he loves you . . . that you are very precious to him . . . that he would like to spend his life with you . . . and blah blah blah! Do you seriously believe that stuff!\"}, {	\"title\": \"Genuinely Sorry He Says . . .\",	\"content\": \"He says he is genuinely sorry for when he hurt you and asks for forgiveness . . . By-the-way, did he make you cry??? Ummm... Next time if i see him, i will kick his ass and make him pee in his pants!!!<br/><br/>Dear child, the boy look really sorry. Not that you have asked me, but i think you should give him a chance . . . Just my opinion . . .\"}, {	\"title\": \"Quoting Him . . . ahem ahem . . .\",	\"content\": \"I love my pretty pretty princess,<br/>The love of my life.<br/><br/>I love you so much,<br/>My dear dear wife.<br/><br/>Give me chance,<br/>And I will prove you wrong.<br/><br/>Don't leave me is what,<br/>I wish to convey by this song.\"}, {	\"title\": \"That was so sweet . . . sniff . . .\",	\"content\": \"That was so sweet. I think you should give him another chance.\"}, {	\"title\": \"Oh . . . Almost slipped my Mind\",	\"content\": \"I almost forgot, he asked me if you would please join him for dinner tomorrow night!<br/><a href='/yes'>Click here if you want to go</a><br/><a href='/no'>Click here if you DON'T want to go</a>\"}]";
+var obj = JSON.parse(txt);
+var dataCount = obj.length;
+var i = -1;
+$(document).ready(function(){
+  $(".prev").click(function(){
+	showPrev();
+  });
+  $(".next").click(function(){
+    showNext();
+  });
+  showNext();
+});
+function showNext(){
+  i = i + 1;
+  changeContent();
+}
+function showPrev(){
+  i = i - 1;
+  changeContent();
+}
+function changeContent(){
+  document.getElementById("title").innerHTML = obj[i].title;
+  document.getElementById("content").innerHTML = obj[i].content;
+  if(i == dataCount - 1){
+	document.getElementById("next").style.visibility = "hidden"
+  }
+  else if (document.getElementById("next").style.visibility == "hidden") {
+	document.getElementById("next").style.visibility = "visible"
+  }
+  if(i == 0){
+	document.getElementById("prev").style.visibility = "hidden"
+  }
+  else if (document.getElementById("prev").style.visibility == "hidden") {
+	document.getElementById("prev").style.visibility = "visible"
+  }
+}
+</script>
+
+<h1 id="title"></h1>
+<p id="content"></p>
+
+<button id = "prev" class="prev">Previous</button><br/><br/>
+<button id = "next" class="next">Next</button>
+</body>
+</html>
